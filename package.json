@@ -1,0 +1,16 @@
+{
+  "name": "finances",
+  "version": "0.0.1",
+  "description": "Estimate mortgage and investments",
+  "main": "finances.js",
+  "dependencies": {
+    "console-table-printer": "2.9.0",
+    "asciichart": "1.5.25"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node finances.js"
+  },
+  "author": "Boris Yakubchik",
+  "license": "MIT"
+}
