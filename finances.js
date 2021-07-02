@@ -89,6 +89,8 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 const amortizationColumns = [];
+const comparisons = [];
+const chartColors = [];
 
 for (let i = 0; i < scenarios.length; i++) {
   amortizationColumns.push({
@@ -97,6 +99,13 @@ for (let i = 0; i < scenarios.length; i++) {
   amortizationColumns.push({
     name: 'investment' + (i + 1), title: allowedColors[i] + '#' + (i + 1) + ' stocks' + asciichart.reset
   });
+  comparisons.push({
+    name: 'value' + i,
+    title: allowedColors[i] + 'Scenario ' + (1 + i) + asciichart.reset,
+  });
+  // push twice so that mortgage & investment are the same color for each scenario
+  chartColors.push(allowedColors[i]);
+  chartColors.push(allowedColors[i]);
 }
 
 const mortgageAndStockTable = new Table({
@@ -106,15 +115,6 @@ const mortgageAndStockTable = new Table({
   ],
   title: 'Mortgage and investments',
 });
-
-const comparisons = [];
-
-for (let i = 0; i < scenarios.length; i++) {
-  comparisons.push({
-    name: 'value' + i,
-    title: allowedColors[i] + 'Scenario ' + (1 + i) + asciichart.reset,
-  });
-};
 
 const startAmountTable = new Table({
   columns: [
@@ -131,14 +131,6 @@ const endAmountTable = new Table({
   ],
   title: 'Final conditions',
 });
-
-const chartColors = [];
-
-for (let i = 0; i < scenarios.length; i++) {
-  // push twice so that mortgage & investment are the same color for each scenario
-  chartColors.push(allowedColors[i]);
-  chartColors.push(allowedColors[i]);
-}
 
 const chartConfig = {
   colors: chartColors,
@@ -210,15 +202,12 @@ startAmountTable.printTable();
 
 const allChartData = [];
 
-for (let i = 0; i < scenarios.length; i++) {
-  allChartData.push(scenarios[i].mortgageChart);
-  allChartData.push(scenarios[i].investmentChart);
-}
-
 console.log();
 console.log('LEGEND');
 for (let i = 0; i < scenarios.length; i++) {
   console.log(allowedColors[i] + 'Scenario ' + (i + 1) + asciichart.reset);
+  allChartData.push(scenarios[i].mortgageChart);
+  allChartData.push(scenarios[i].investmentChart);
 }
 console.log();
 
@@ -269,17 +258,18 @@ function runForYears(years) {
 }
 
 // Update mortgage and investments
-function computeMonth(scenario) {
-  scenario.investment = scenario.investment * (1 + scenario.stockRate / 12) + scenario.additionalInvestment;
-  scenario.mortgageInterest = scenario.mortgage * scenario.mortgageRate / 12;
-  scenario.totalToInterest = scenario.totalToInterest + scenario.mortgageInterest;
-  scenario.mortgage = scenario.mortgage - (scenario.mortgagePayment - scenario.mortgageInterest);
+// x = scenario (object)
+function computeMonth(x) {
+  x.investment = x.investment * (1 + x.stockRate / 12) + x.additionalInvestment;
+  x.mortgageInterest = x.mortgage * x.mortgageRate / 12;
+  x.totalToInterest = x.totalToInterest + x.mortgageInterest;
+  x.mortgage = x.mortgage - (x.mortgagePayment - x.mortgageInterest);
 
-  if (scenario.mortgage <= 0) {
-    scenario.mortgage = 0;
-    scenario.investment = scenario.investment + scenario.mortgagePayment;
+  if (x.mortgage <= 0) {
+    x.mortgage = 0;
+    x.investment = x.investment + x.mortgagePayment;
   } else {
-    scenario.totalToMortgage = scenario.totalToMortgage + scenario.mortgagePayment;
+    x.totalToMortgage = x.totalToMortgage + x.mortgagePayment;
   }
 }
 
