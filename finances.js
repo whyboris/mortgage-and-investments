@@ -53,22 +53,22 @@ const chartHeight = 25;        // how tall the chart should be
 //
 // Chart colors:
 // change order if you'd like the graph to have different colors
-// order corresponds to scenarios
+// order corresponds to scenarios. Keep color and lightcolor together (as a pair)
 const allowedColors = [
   asciichart.green,
-  asciichart.red,
-  asciichart.blue,
-  asciichart.yellow,
-  asciichart.magenta,
-  asciichart.cyan,
-  asciichart.lightgray,
-  asciichart.darkgray,
-  asciichart.lightred,
   asciichart.lightgreen,
-  asciichart.lightyellow,
+  asciichart.red,
+  asciichart.lightred,
+  asciichart.blue,
   asciichart.lightblue,
+  asciichart.yellow,
+  asciichart.lightyellow,
+  asciichart.magenta,
   asciichart.lightmagenta,
+  asciichart.cyan,
   asciichart.lightcyan,
+  asciichart.darkgray,
+  asciichart.lightgray,
   asciichart.white,
   asciichart.black,
 ];
@@ -103,9 +103,9 @@ for (let i = 0; i < scenarios.length; i++) {
     name: 'value' + i,
     title: allowedColors[i] + 'Scenario ' + (1 + i) + asciichart.reset,
   });
-  // push twice so that mortgage & investment are the same color for each scenario
-  chartColors.push(allowedColors[i]);
-  chartColors.push(allowedColors[i]);
+  // makes `color` and `lightcolor` correspond to mortgage and investment
+  chartColors.push(allowedColors[i * 2]);
+  chartColors.push(allowedColors[i * 2 + 1]);
 }
 
 const mortgageAndStockTable = new Table({
