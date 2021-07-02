@@ -205,7 +205,7 @@ const allChartData = [];
 console.log();
 console.log('LEGEND');
 for (let i = 0; i < scenarios.length; i++) {
-  console.log(allowedColors[i] + 'Scenario ' + (i + 1) + asciichart.reset);
+  console.log(allowedColors[i * 2] + 'Scenario ' + (i + 1) + asciichart.reset);
   allChartData.push(scenarios[i].mortgageChart);
   allChartData.push(scenarios[i].investmentChart);
 }
