@@ -94,14 +94,14 @@ const chartColors = [];
 
 for (let i = 0; i < scenarios.length; i++) {
   amortizationColumns.push({
-    name: 'mortgage' + (i + 1), title: allowedColors[i] + '#' + (i + 1) + ' mortgage' + asciichart.reset
+    name: 'mortgage' + (i + 1), title: allowedColors[i * 2] + '#' + (i + 1) + ' mortgage' + asciichart.reset
   });
   amortizationColumns.push({
-    name: 'investment' + (i + 1), title: allowedColors[i] + '#' + (i + 1) + ' stocks' + asciichart.reset
+    name: 'investment' + (i + 1), title: allowedColors[i * 2] + '#' + (i + 1) + ' stocks' + asciichart.reset
   });
   comparisons.push({
     name: 'value' + i,
-    title: allowedColors[i] + 'Scenario ' + (1 + i) + asciichart.reset,
+    title: allowedColors[i * 2] + 'Scenario ' + (1 + i) + asciichart.reset,
   });
   // makes `color` and `lightcolor` correspond to mortgage and investment
   chartColors.push(allowedColors[i * 2]);

@@ -8,11 +8,11 @@ Easy to edit and customize.
 
 Loan amortization schedule:
 
-![2021-06-30 22_15_20-Window](https://user-images.githubusercontent.com/17264277/124054906-f0302e80-d9f0-11eb-8c37-74c08228f43c.png)
+![image](https://user-images.githubusercontent.com/17264277/124315473-fc77d100-db41-11eb-926c-9bbaf4973969.png)
 
-Graph: 
+Graph:
 
-![2021-06-30 22_14_55-Window](https://user-images.githubusercontent.com/17264277/124054941-fc1bf080-d9f0-11eb-91a5-a91006652949.png)
+![image](https://user-images.githubusercontent.com/17264277/124315296-bfabda00-db41-11eb-928a-a18b9eafbcfc.png)
 
 ## How to use:
 
