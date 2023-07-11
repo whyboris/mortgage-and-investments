@@ -4,7 +4,7 @@
   "description": "Estimate mortgage and investments",
   "main": "finances.js",
   "dependencies": {
-    "console-table-printer": "2.11.1",
+    "console-table-printer": "2.11.2",
     "asciichart": "1.5.25"
   },
   "devDependencies": {},
